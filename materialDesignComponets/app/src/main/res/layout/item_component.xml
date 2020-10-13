@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/mtrl_card_spacing"
+    android:layout_marginStart="@dimen/mtrl_card_spacing"
+    android:layout_marginEnd="@dimen/mtrl_card_spacing"
+    >
+    
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imagePhoto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_image_height">
+    </androidx.appcompat.widget.AppCompatImageView>
+    
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"/>
+
+
+</com.google.android.material.card.MaterialCardView>
