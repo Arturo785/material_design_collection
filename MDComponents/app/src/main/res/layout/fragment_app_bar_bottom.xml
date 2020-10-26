@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/containerMain">
+
+    <!--With this stuff you can put more than one layout inside other in a-->
+    <!--Coordinator layout-->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <include layout="@layout/fragment_card"/>
+            <include layout="@layout/fragment_text_field"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!--The hide on scroll is possible because of the coordinator layout-->
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored"
+        app:navigationIcon="@drawable/ic_timeline"
+        app:hideOnScroll="true"
+        app:menu="@menu/menu_bottom_nav"
+        app:fabCradleMargin="@dimen/common_padding_default"
+        app:fabCradleRoundedCornerRadius="@dimen/common_padding_middle"
+        app:fabCradleVerticalOffset="@dimen/common_padding_default"
+        >
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fav"
+        android:src="@drawable/ic_baseline_add_24"
+        android:backgroundTint="@android:color/black"
+        app:tint="@android:color/white"
+        app:layout_anchor="@id/bottom_app_bar"
+        />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

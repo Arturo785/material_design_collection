@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="MyTheme.DayNight" parent="Base.MyTheme">
+        <item name="android:statusBarColor">?colorPrimaryVariant</item> <!--Uses the one we defined above-->
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item> <!--the icons on the status bar-->
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item> <!--the buttons on the navigation-->
+    </style>
+
+</resources>

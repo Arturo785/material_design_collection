@@ -144,4 +144,11 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="filled_dense_with_error_5"><![CDATA[filled dense with error < 5]]></string>
+    <string name="menu_popup_menu">Pop-up Menu</string>
+    <string name="meni_hint_autocomplete">Autocomplete</string>
+    <string name="app_bar_top">app bar top</string>
+    <string name="app_bar_bottom">app bar bottom</string>
+    <string name="picker_dialog">Picker</string>
+    <string name="picker_fullscreen">full picker</string>
+    <string name="picker_title">Seleccione una fecha</string>
 </resources>

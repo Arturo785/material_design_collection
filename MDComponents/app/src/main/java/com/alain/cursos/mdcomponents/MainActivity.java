@@ -7,10 +7,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alain.cursos.mdcomponents.adapters.ComponentAdapter;
+import com.alain.cursos.mdcomponents.fragments.AppBarFragment;
 import com.alain.cursos.mdcomponents.fragments.BottomNavigationFragment;
 import com.alain.cursos.mdcomponents.fragments.ButtonFragment;
+import com.alain.cursos.mdcomponents.fragments.CardFragment;
 import com.alain.cursos.mdcomponents.fragments.CheckBoxFragment;
+import com.alain.cursos.mdcomponents.fragments.DialogFragment;
 import com.alain.cursos.mdcomponents.fragments.FloatingActionButtonFragment;
+import com.alain.cursos.mdcomponents.fragments.MenuFragment;
+import com.alain.cursos.mdcomponents.fragments.PickerFragment;
 import com.alain.cursos.mdcomponents.fragments.SnackBarFragment;
 import com.alain.cursos.mdcomponents.fragments.TextFieldFragmentFragment;
 import com.alain.cursos.mdcomponents.utils.Component;
@@ -48,6 +53,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         mAdapter.add(TextFieldFragmentFragment.getmInstance());
         mAdapter.add(FloatingActionButtonFragment.getmInstance());
         mAdapter.add(CheckBoxFragment.getmInstance());
+        mAdapter.add(CardFragment.getmInstance());
+        mAdapter.add(MenuFragment.getmInstance());
+        mAdapter.add(DialogFragment.getmInstance());
+        mAdapter.add(AppBarFragment.getmInstance());
+        mAdapter.add(PickerFragment.getmInstance());
+        mAdapter.reverse();
     }
 
     private void configRecyclerView() {

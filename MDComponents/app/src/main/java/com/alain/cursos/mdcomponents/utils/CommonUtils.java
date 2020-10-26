@@ -11,10 +11,15 @@ package com.alain.cursos.mdcomponents.utils;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.alain.cursos.mdcomponents.fragments.AppBarFragment;
 import com.alain.cursos.mdcomponents.fragments.BottomNavigationFragment;
 import com.alain.cursos.mdcomponents.fragments.ButtonFragment;
+import com.alain.cursos.mdcomponents.fragments.CardFragment;
 import com.alain.cursos.mdcomponents.fragments.CheckBoxFragment;
+import com.alain.cursos.mdcomponents.fragments.DialogFragment;
 import com.alain.cursos.mdcomponents.fragments.FloatingActionButtonFragment;
+import com.alain.cursos.mdcomponents.fragments.MenuFragment;
+import com.alain.cursos.mdcomponents.fragments.PickerFragment;
 import com.alain.cursos.mdcomponents.fragments.SnackBarFragment;
 import com.alain.cursos.mdcomponents.fragments.TextFieldFragmentFragment;
 
@@ -44,6 +49,10 @@ public class CommonUtils {
                 fragment = new CheckBoxFragment();
                 break;
 
+            case CardFragment.TAG:
+                fragment = new CardFragment();
+                break;
+
             //STATIC
             case BottomNavigationFragment.TAG:
                 fragment = new BottomNavigationFragment();
@@ -55,6 +64,22 @@ public class CommonUtils {
 
             case FloatingActionButtonFragment.TAG:
                 fragment = new FloatingActionButtonFragment();
+                break;
+
+            case MenuFragment.TAG:
+                fragment = new MenuFragment();
+                break;
+
+            case DialogFragment.TAG:
+                fragment = new DialogFragment();
+                break;
+
+            case AppBarFragment.TAG:
+                fragment = new AppBarFragment();
+                break;
+
+            case PickerFragment.TAG:
+                fragment = new PickerFragment();
                 break;
         }
 
