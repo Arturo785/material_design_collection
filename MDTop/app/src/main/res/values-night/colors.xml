@@ -27,6 +27,8 @@
 
     <color name="color_divider">#7e8a97</color>
 
+    <color name="color_collapsing_toolbar_layout">@color/color_surface</color>
+
 
 
 </resources>

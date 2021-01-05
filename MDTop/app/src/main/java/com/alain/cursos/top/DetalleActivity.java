@@ -11,6 +11,7 @@ package com.alain.cursos.top;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -32,6 +33,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
@@ -128,9 +131,21 @@ public class DetalleActivity extends AppCompatActivity implements DatePickerDial
     private void configActionBar() {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
+        toolbarLayout.setExpandedTitleColor(Color.WHITE);
+        appBar.addOnOffsetChangedListener(((appBarLayout, verticalOffset) -> {
+
+            //verticalOffset is the current pos of the appbarLayout
+            float percentage = Math.abs( (float) Math.abs(verticalOffset) / appBarLayout.getTotalScrollRange() -1 );
+            int colorValue = (int) (percentage * 255);
+            toolbar.getNavigationIcon().setTint(Color.rgb(colorValue,colorValue,colorValue));
+
+        }));
+
         configTitle();
     }
 
@@ -282,13 +297,27 @@ public class DetalleActivity extends AppCompatActivity implements DatePickerDial
 
     @OnClick(R.id.etFechaNacimiento)
     public void onSetFecha() {
-        DialogSelectorFecha selectorFecha = new DialogSelectorFecha();
+
+        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
+
+        MaterialDatePicker<?> picker = builder.build();
+
+        picker.addOnPositiveButtonClickListener(selection -> {
+            etFechaNacimiento.setText(new SimpleDateFormat("dd/MM/yyyy",Locale.ROOT)
+                                        .format(selection));
+
+            mArtista.setFechaNacimiento((Long) selection);
+            etEdad.setText(getEdad((Long)selection));
+        });
+        picker.show(getSupportFragmentManager(), picker.toString());
+
+/*        DialogSelectorFecha selectorFecha = new DialogSelectorFecha();
         selectorFecha.setListener(DetalleActivity.this);
 
         Bundle args = new Bundle();
         args.putLong(DialogSelectorFecha.FECHA, mArtista.getFechaNacimiento());
         selectorFecha.setArguments(args);
-        selectorFecha.show(getSupportFragmentManager(), DialogSelectorFecha.SELECTED_DATE);
+        selectorFecha.show(getSupportFragmentManager(), DialogSelectorFecha.SELECTED_DATE);*/
     }
 
 
@@ -300,7 +329,8 @@ public class DetalleActivity extends AppCompatActivity implements DatePickerDial
     public void photoHandler(View view) {
         switch (view.getId()) {
             case R.id.imgDeleteFoto:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this)
+              //  AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this)
                         .setTitle(R.string.detalle_dialogDelete_title)
                         .setMessage(String.format(Locale.ROOT,
                                 getString(R.string.detalle_dialogDelete_message),
@@ -326,7 +356,8 @@ public class DetalleActivity extends AppCompatActivity implements DatePickerDial
     private void showAddPhotoDialog() {
         final EditText etFotoUrl = new EditText(this);
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+      //  AlertDialog.Builder builder = new AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.addArtist_dialogUrl_title)
                 .setPositiveButton(R.string.label_dialog_add, (dialogInterface, i)->
                     savePhotoUrlArtist(etFotoUrl.getText().toString().trim()))

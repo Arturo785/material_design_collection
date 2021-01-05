@@ -31,6 +31,14 @@
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.MyTheme.MediumComponents</item>
         <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.MyTheme.LargeComponents</item>
 
+
+        <!--CUSTOM ALERT DIALOG BUTTONS COLOR -->
+        <item name="materialAlertDialogTheme">@style/MyMaterialAlertDialog</item>
+
+        <!--TRANSITIONS-->
+        <item name="android:windowEnterTransition">@android:transition/explode</item>
+        <item name="android:windowExitTransition">@android:transition/fade</item>
+
     </style>
     
 

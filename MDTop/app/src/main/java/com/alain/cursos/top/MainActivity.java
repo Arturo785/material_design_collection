@@ -9,6 +9,7 @@ package com.alain.cursos.top;
  * Cursos Android ANT
  */
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
@@ -163,7 +165,9 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     public void onItemClick(Artista artista) {
         Intent intent = new Intent(MainActivity.this, DetalleActivity.class);
         intent.putExtra(Artista.ID, artista.getId());
-        startActivity(intent);
+       // startActivity(intent);
+        //Makes the transitions
+        startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
     @Override
@@ -172,7 +176,8 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         if (vibrator != null){
             vibrator.vibrate(60);
         }
-        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+       // AlertDialog.Builder builder = new AlertDialog.Builder(this)
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.main_dialogDelete_title)
                 .setMessage(String.format(Locale.ROOT, getString(R.string.main_dialogDelete_message),
                         artista.getNombreCompleto()))
@@ -195,7 +200,12 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         Intent intent = new Intent(MainActivity.this, AddArtistActivity.class);
         intent.putExtra(Artista.ORDEN, adapter.getItemCount()+1);
         //startActivity(intent);
-        startActivityForResult(intent, 1);
+        //startActivityForResult(intent, 1);
+        //To make use of the transitions defined in themes
+          startActivityForResult(intent,
+                  1,
+                  ActivityOptions.makeSceneTransitionAnimation(this).toBundle()
+          );
     }
 
     private void showMessage(int resource) {

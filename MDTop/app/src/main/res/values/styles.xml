@@ -50,5 +50,10 @@
 
     </style>
 
+    <!--For the alert dialogs-->
+    <style name="MyMaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorPrimary">@color/color_primary_variant</item>
+    </style>
+
 </resources>
 

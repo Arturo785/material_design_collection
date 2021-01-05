@@ -26,6 +26,9 @@
 
     <color name="color_divider">#1E000000</color>
 
+    <!--Collapsing toolBarColor-->
+    <color name="color_collapsing_toolbar_layout">@color/color_primary</color>
+
 
 </resources>
 
